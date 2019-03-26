@@ -1,0 +1,150 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-color: rgb(217, 224, 243);
+}
+
+.prenavbar {
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(49, 49, 228, 0.911);
+  border-bottom: 3px solid rgba(36, 36, 219, 0.911);
+}
+
+.user {
+  float: left;
+  font-size: 30px;
+  color: rgba(12, 12, 165, 0.911);
+}
+
+.more {
+  float: right;
+  font-size: 30px;
+  color: rgba(12, 12, 165, 0.911);
+}
+
+.navbar {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.logo {
+  margin-top: 40px;
+  width: 100%;
+  height: 140px;
+}
+
+.content {
+  text-align: center;
+}
+
+.browsing {
+  margin-top: 50px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.login {
+  float: left;
+  margin-left: 465px;
+}
+
+.create {
+  float: right;
+  margin-right: 465px;
+}
+
+.home {
+  font-size: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: orangered;
+  font-weight: bold;
+}
+
+a:hover {
+  color: darkorange;
+}
+
+.carousel {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.mt-5 {
+  text-align: center;
+}
+
+.w3-close {
+  background-color: rgba(37, 37, 228, 0.911);
+  color: white;
+  font-weight: bold;
+}
+
+.w3-sidebar {
+  background-color: rgba(152, 152, 158, 0.904);
+  z-index: 99;
+  max-width: 130px;
+  right: 0;
+}
+
+#myPopup {
+  max-height: 200px;
+  max-width: 200px;
+  background-color: rgb(170, 182, 214);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.cityTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: #bccbe2;
+  color: #96acce;
+  height: 40px;
+  margin-top: 0;
+  padding-top: 2px;
+}
