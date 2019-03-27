@@ -1,28 +1,33 @@
 const express = require('express');
 const app = express();
-const MongoClient = require('mongodb').MongoClient;
-const bodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient
+var ObjectID = require('mongodb').ObjectID;
+const bodyParser = require('body-parser')
 const router = express.Router();
-const mongoUrl = "mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true";
-const port = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-MongoClient.connect(mongoUrl, (error, database) => {
-    var database = database.db("mytineryApp");
+MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true', (err, db) => {
+    var dbase = db.db("mytineryApp");
+    if (err)
+        return console.log(err)
 
-    if (error) return console.error(error);
-   
-    app.listen(port, console.log('\n', `App started with port: ${port}`, '\n'));
-    router.get('/all', function (res) {
-        database.collection("cities").find().toArray((error, result) => {
-            if (!error) return res.send(result);
-        });
-    });
+    app.listen(8080, () => {
+        console.log('app working on 8080')
+    })
 
-    router.get('/home', (res) => res.send('Home'));
+    router.get('/all', function (req, res) {
+        dbase.collection("cities").find().toArray((err, result) => {
+            if (!err)
+                return res.send(result)
+        })
+    })
+
+    router.get('/home', function (req, res) {
+        res.send('Home');
+    })
     app.use("/cities", router);
-});
+})

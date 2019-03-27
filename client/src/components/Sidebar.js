@@ -11,6 +11,7 @@ class Sidebar extends React.Component {
         return (
             <div className="w3-sidebar w3-bar-block w3-collapse" id="mySidebar">
                 <button className="w3-close w3-bar-item w3-button w3-hide-large" onClick={this.close}>Close</button> 
+                <Link to="/" className="w3-bar-item w3-button">Home</Link>
                 <Link to="/cities" className="w3-bar-item w3-button">Cities</Link>
             </div>
         );

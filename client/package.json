@@ -2,6 +2,7 @@
   "name": "routing",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "mdbreact": "^4.11.1",
     "react": "^16.8.4",

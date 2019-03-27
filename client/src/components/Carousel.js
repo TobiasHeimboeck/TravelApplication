@@ -15,7 +15,7 @@ class Carousel extends React.Component {
 
         for (var i = 0; i < data.length; i++) {
             list.push(
-                <CItem key={i} itemId={i} title={data[i].name} src={data[i].image} />
+                <CItem key={i} itemId={i} title={data[i].name} image={data[i].image} />
             );
         }
 
