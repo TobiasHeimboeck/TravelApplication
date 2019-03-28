@@ -18,5 +18,6 @@ export const rootReducer = (state = initState, action) => {
             citiesIsLoading: action.citiesIsLoading
         }
     }
-    return state
+
+    return state;
 }

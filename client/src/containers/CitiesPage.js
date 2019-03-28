@@ -8,15 +8,11 @@ import * as actionCreator from '../store/actions/actions.js';
 class CitiesPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            cityFilter: ""
-        }
+        this.state = {cityFilter: ""}
     }
-    
+
     handleChange = (e) => {
-        this.setState({
-            cityFilter: e.target.value
-        });
+        this.setState({cityFilter: e.target.value});
     }
 
     componentDidMount() {
@@ -26,31 +22,28 @@ class CitiesPage extends React.Component {
     render() {
         if (this.props.citiesIsLoading) {
             return <div>Loading...</div>;
+        } else {
+            return (
+                <div>
+                    <Sidebar />
+                    <PreNavbar />
+                    <div>
+                        <h1 id="header" className="cityTitle">Cities</h1>
+                        <input value={this.state.cityFilter} onChange={this.handleChange} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                        {
+                            this.props.cities.map((item, index) => (
+                                <City name={item.name} image={item.image} key={index} />
+                            ))
+                        }
+                    </div>
+                </div>
+            ); 
         }
-        
-        return (
-            <div>
-                <Sidebar />
-                <PreNavbar />
-            <div>
-                <h1 id="header" className="cityTitle">Cities</h1>
-                <input value={this.state.cityFilter} onChange={this.handleChange} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                {
-                    this.props.cities.map((item, index) => (
-                        <City name={item.name} image={item.image} key={index} />
-                    ))
-                }
-            </div>
-        </div>
-        );
     }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        cities: state.cities,
-        citiesIsLoading: state.citiesIsLoading
-    }
+    return {cities: state.cities, city: state.city, citiesIsLoading: state.citiesIsLoading}
 }
   
 function mapDispatchToProps(dispatch) {
