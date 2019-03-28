@@ -29,5 +29,6 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
     router.get('/home', function (req, res) {
         res.send('Home');
     })
+    
     app.use("/cities", router);
 })

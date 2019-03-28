@@ -167,3 +167,10 @@ a:hover {
   height: 150px;
   width: 100%;
 }
+
+.cityFilter {
+  width: 80%;
+  height: 40px;
+  margin-left: 35px;
+  color: lightgray;
+}

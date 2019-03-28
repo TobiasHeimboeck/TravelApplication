@@ -1,7 +1,8 @@
-var data = [{
+var data = [
+    {
         "name": "Buenos Aires",
-        "country": "i",
-        "image": "fi",
+        "country": "Argentina",
+        "image": "https://i.ibb.co/KjrSCJG/buenos-aires.jpg",
         "used": false,
     },
     {

@@ -2,56 +2,61 @@ import React from 'react';
 import Sidebar from '../components/Sidebar.js';
 import PreNavbar from '../components/PreNavbar.js';
 import City from '../components/City.js';
+import { connect } from "react-redux";
+import * as actionCreator from '../store/actions/actions.js';
 
 class CitiesPage extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            cities: [],
-            isFetching: false
-        };
+            cityFilter: ""
+        }
     }
-
-    fetchData() {
-        fetch("/cities/all")
-            .then(response => response.json())
-            .then(result => this.setState({
-                cities: result, 
-                isFetching: false
-            }))
-            .catch(e => console.log(e));
+    
+    handleChange = (e) => {
+        this.setState({
+            cityFilter: e.target.value
+        });
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.props.getCities();
     }
 
     render() {
-        if (this.state.cities.length > 0) {
-            return (
-                <div>
-                    <Sidebar />
-                    <PreNavbar />
-                    <div>
-                        <h1 id="header" className="cityTitle">Cities</h1>
-                        {this.state.cities.map((item, index) => (
-                            <City name={item.name} image={item.image} key={index} />
-                        ))}
-                    </div>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <Sidebar />
-                    <PreNavbar />
-                    <div>
-                        <h1 id="header" className="cityTitle">Cities</h1>
-                    </div>
-                </div>
-            );
+        if (this.props.citiesIsLoading) {
+            return <div>Loading...</div>;
         }
+        
+        return (
+            <div>
+                <Sidebar />
+                <PreNavbar />
+            <div>
+                <h1 id="header" className="cityTitle">Cities</h1>
+                <input value={this.state.cityFilter} onChange={this.handleChange} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                {
+                    this.props.cities.map((item, index) => (
+                        <City name={item.name} image={item.image} key={index} />
+                    ))
+                }
+            </div>
+        </div>
+        );
     }
 }
 
-export default CitiesPage;
+const mapStateToProps = (state) => {
+    return {
+        cities: state.cities,
+        citiesIsLoading: state.citiesIsLoading
+    }
+}
+  
+function mapDispatchToProps(dispatch) {
+    return {
+        getCities: () => dispatch(actionCreator.fetchCitiesData()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (CitiesPage);

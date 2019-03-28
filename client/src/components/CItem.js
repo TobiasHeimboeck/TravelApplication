@@ -2,7 +2,6 @@ import React from 'react';
 import { MDBCarouselCaption, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact';
 
 class CItem extends React.Component {
-    
     constructor(props) {
         super();
         this.itemId = {itemId: props.itemId}
