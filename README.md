@@ -1,5 +1,5 @@
-**Server URL** [http://localhost:8080] is the server url 
-**Client URL** [http://localhost:3000] is the client url
+**Server Port** [8080] is the server url 
+**Client Port** [3000] is the client url
 
 ## Travel Application
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
