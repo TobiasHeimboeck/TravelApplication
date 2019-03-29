@@ -2,7 +2,7 @@
 ## Travel Application
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Testing Informations
+## Ports
 **Server Port** [8080] 
 **Client Port** [3000]
 
