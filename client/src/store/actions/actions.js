@@ -4,7 +4,6 @@ export const getCities = (cities) => {
         cities
     }
 }
-
 export const citiesIsLoading = (citiesIsLoading) => {
     return {
         type: 'CITIES_IS_LOADING',

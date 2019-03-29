@@ -19,12 +19,12 @@ class CitiesPage extends React.Component {
 
     handleFilterInput = (cityFilter) => {
         let filteredCities = this.props.cities;
-        
+
         filteredCities = filteredCities.filter((city) => {
             let cityName = city.name.toLowerCase();
             return cityName.indexOf(cityFilter.target.value.toLowerCase()) !== -1;
         })
-
+        
         this.setState({filteredCities});
     }
 
@@ -38,13 +38,10 @@ class CitiesPage extends React.Component {
                         <Sidebar />
                         <PreNavbar />
                         <div>
-                            <h1 id="header" className="cityTitle">Cities</h1>
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                            {
-                                this.state.filteredCities.map((item, index) => (
-                                    <City name={item.name} image={item.image} key={index} />
-                                ))
-                            }
+                            {this.state.filteredCities.map((item, index) => (
+                                <City name={item.name} image={item.image} key={index} />
+                            ))}
                         </div>
                     </div>
                 ); 
@@ -54,13 +51,10 @@ class CitiesPage extends React.Component {
                         <Sidebar />
                         <PreNavbar />
                         <div>
-                            <h1 id="header" className="cityTitle">Cities</h1>
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                            {
-                                this.props.cities.map((item, index) => (
-                                    <City name={item.name} image={item.image} key={index} />
-                                ))
-                            }
+                            {this.props.cities.map((item, index) => (
+                                <City name={item.name} image={item.image} key={index} />
+                            ))}
                         </div>
                     </div>
                 ); 
@@ -72,7 +66,7 @@ class CitiesPage extends React.Component {
 const mapStateToProps = (state) => {
     return {cities: state.cities, city: state.city, citiesIsLoading: state.citiesIsLoading}
 }
-  
+
 function mapDispatchToProps(dispatch) {
     return {
         getCities: () => dispatch(actionCreator.fetchCitiesData()),

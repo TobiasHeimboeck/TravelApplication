@@ -119,10 +119,12 @@ a:hover {
   background-color: rgba(37, 37, 228, 0.911);
   color: white;
   font-weight: bold;
+  text-align: center;
+  height: 60px;
 }
 
 .w3-sidebar {
-  background-color: rgba(152, 152, 158, 0.904);
+  background-color: rgba(206, 206, 211, 0.801);
   z-index: 99;
   max-width: 130px;
   right: 0;
@@ -169,8 +171,9 @@ a:hover {
 }
 
 .cityFilter {
-  width: 80%;
+  width: 90%;
   height: 40px;
-  margin-left: 35px;
-  color: lightgray;
+  margin-left: 19px;
+  margin-top: 10px;
+  color: darkgray;
 }

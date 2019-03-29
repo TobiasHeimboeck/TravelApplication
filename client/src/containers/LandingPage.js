@@ -4,7 +4,6 @@ import Content from '../components/Content.js';
 import Footer from '../components/Footer.js';
 
 class LandingPage extends React.Component {
-
     render() {
         return (
             <div>
