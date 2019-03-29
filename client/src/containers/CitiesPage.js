@@ -8,36 +8,63 @@ import * as actionCreator from '../store/actions/actions.js';
 class CitiesPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {cityFilter: ""}
-    }
-
-    handleChange = (e) => {
-        this.setState({cityFilter: e.target.value});
+        this.state = {
+            filteredCities: [],
+        };
     }
 
     componentDidMount() {
         this.props.getCities();
     }
 
+    handleFilterInput = (cityFilter) => {
+        let filteredCities = this.props.cities;
+        
+        filteredCities = filteredCities.filter((city) => {
+            let cityName = city.name.toLowerCase();
+            return cityName.indexOf(cityFilter.target.value.toLowerCase()) !== -1;
+        })
+
+        this.setState({filteredCities});
+    }
+
     render() {
         if (this.props.citiesIsLoading) {
             return <div>Loading...</div>;
         } else {
-            return (
-                <div>
-                    <Sidebar />
-                    <PreNavbar />
+            if (this.state.filteredCities.length > 0) {
+                return (
                     <div>
-                        <h1 id="header" className="cityTitle">Cities</h1>
-                        <input value={this.state.cityFilter} onChange={this.handleChange} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                        {
-                            this.props.cities.map((item, index) => (
-                                <City name={item.name} image={item.image} key={index} />
-                            ))
-                        }
+                        <Sidebar />
+                        <PreNavbar />
+                        <div>
+                            <h1 id="header" className="cityTitle">Cities</h1>
+                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                            {
+                                this.state.filteredCities.map((item, index) => (
+                                    <City name={item.name} image={item.image} key={index} />
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
-            ); 
+                ); 
+            } else {
+                return (
+                    <div>
+                        <Sidebar />
+                        <PreNavbar />
+                        <div>
+                            <h1 id="header" className="cityTitle">Cities</h1>
+                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                            {
+                                this.props.cities.map((item, index) => (
+                                    <City name={item.name} image={item.image} key={index} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                ); 
+            }
         }
     }
 }

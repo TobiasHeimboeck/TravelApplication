@@ -1,4 +1,4 @@
-**Server URL** [http://localhost:8080] is the server url
+**Server URL** [http://localhost:8080] is the server url 
 **Client URL** [http://localhost:3000] is the client url
 
 ## Travel Application

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Sidebar extends React.Component {
-      
     close() {
         document.getElementById("mySidebar").style.display = "none";
     }
