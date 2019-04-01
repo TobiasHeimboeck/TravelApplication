@@ -10,7 +10,7 @@
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "author": "Tobias Heimboeck",
+  "author": "Tobias Heimböck",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",

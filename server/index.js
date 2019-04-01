@@ -19,6 +19,10 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
         console.log('app working on 8080')
     })
 
+    router.get('/home', function (request, response) {
+        response.send('Home');
+    })
+
     router.get('/all', function (request, response) {
         dbase.collection("cities").find().toArray((error, result) => {
             if (!error)
@@ -44,10 +48,6 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
                 }
             }
         })
-    })
-
-    router.get('/home', function (request, response) {
-        response.send('Home');
     })
 
     app.use("/cities", router);
