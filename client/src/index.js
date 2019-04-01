@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import SecondLandingPage from './containers/SecondLandingPage.js';
 import CitiesPage from './containers/CitiesPage.js';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const routing = (
   <Router>

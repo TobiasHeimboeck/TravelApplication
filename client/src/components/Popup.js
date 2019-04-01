@@ -1,7 +1,6 @@
 import React from 'react';
 
 class Popup extends React.Component {
-      
     close() {
         document.getElementById("myPopup").style.display = "none";
     }

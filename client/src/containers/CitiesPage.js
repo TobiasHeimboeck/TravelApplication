@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actionCreator from '../store/actions/actions.js';
 
 class CitiesPage extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -64,7 +65,7 @@ class CitiesPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {cities: state.cities, city: state.city, citiesIsLoading: state.citiesIsLoading}
+    return {cities: state.cities, city: state.city, citiesIsLoading: state.citiesIsLoading};
 }
 
 function mapDispatchToProps(dispatch) {
