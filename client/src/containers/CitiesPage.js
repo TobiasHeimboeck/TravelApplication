@@ -1,9 +1,8 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar.js';
-import PreNavbar from '../components/PreNavbar.js';
 import City from '../components/City.js';
 import { connect } from "react-redux";
 import * as actionCreator from '../store/actions/cityActions.js';
+import { Link } from 'react-router-dom';
 
 class CitiesPage extends React.Component {
 
@@ -36,27 +35,31 @@ class CitiesPage extends React.Component {
             if (this.state.filteredCities.length > 0) {
                 return (
                     <div>
-                        <Sidebar />
-                        <PreNavbar />
-                        <div>
+                        <div className="searchbar">
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                            {this.state.filteredCities.map((item, index) => (
-                                <City name={item.name} image={item.image} key={index} />
-                            ))}
+                            <ul className="selectors">
+                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME</li> </Link>
+                                <Link to="/cities"> <li style={{float: "right"}}> <i className="fas fa-city"></i> CITIES</li> </Link>
+                            </ul>
                         </div>
+                        {this.state.filteredCities.map((item, index) => (
+                            <City name={item.name} image={item.image} call={item.call} key={index} />
+                        ))}
                     </div>
                 ); 
             } else {
                 return (
                     <div>
-                        <Sidebar />
-                        <PreNavbar />
-                        <div>
+                        <div className="searchbar">
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                            {this.props.cities.map((item, index) => (
-                                <City name={item.name} image={item.image} key={index} />
-                            ))}
+                            <ul className="selectors">
+                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME</li> </Link>
+                                <Link to="/cities"> <li style={{float: "right"}}> <i className="fas fa-city"></i> CITIES</li> </Link>
+                            </ul>
                         </div>
+                        {this.props.cities.map((item, index) => (
+                            <City name={item.name} image={item.image} call={item.call} key={index} />
+                        ))}
                     </div>
                 ); 
             }

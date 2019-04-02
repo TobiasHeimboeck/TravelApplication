@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
 import * as creator from '../store/actions/itineraryActions';
+import PreNavbar from '../components/PreNavbar';
+import Sidebar from '../components/Sidebar';
+import { Link } from 'react-router-dom';
 
 class CityPage extends React.Component {
 
@@ -11,9 +14,12 @@ class CityPage extends React.Component {
     render() {
         return (
             <div>
-                <p className="cityName">  </p>
-                <div className="content">
-                    <p className="cityHeadline">Available MYtineries</p>
+                <Sidebar />
+                <PreNavbar />
+                <div className="toolbar">
+                    <Link to="/cities">
+                        <i className="fa fa-arrow-left"></i>
+                    </Link>
                 </div>
             </div>
         );

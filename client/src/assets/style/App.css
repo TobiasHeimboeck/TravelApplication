@@ -98,7 +98,6 @@ body {
 
 a {
   text-decoration: none;
-  color: rgb(255, 69, 0);
   font-weight: bold;
 }
 
@@ -174,6 +173,40 @@ a:hover {
   width: 90%;
   height: 40px;
   margin-left: 19px;
-  margin-top: 10px;
   color: darkgray;
+  position: absolute;
+  top: 10px;
+  padding-left: 10px;
+}
+
+.toolbar {
+  background-color: lightgray;
+  height: 45px;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.toolbar i {
+  width: 40px;
+}
+
+.searchbar {
+  background-color: rgba(49, 49, 228, 0.911);
+  height: 100px;
+  width: 100%;
+}
+
+.selectors li {
+  list-style-type: none; 
+  display: inline;
+  border-bottom: 2px solid white;
+}
+
+.selectors {
+  color: white;
+  width: 400px;
+  padding-top: 60px;
+  margin-left: -16px;
 }
