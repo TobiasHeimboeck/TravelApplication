@@ -36,9 +36,9 @@ class CitiesPage extends React.Component {
                 return (
                     <div>
                         <div className="searchbar">
-                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>                                                  
                             <ul className="selectors">
-                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME</li> </Link>
+                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME </li> </Link>
                                 <Link to="/cities"> <li style={{float: "right"}}> <i className="fas fa-city"></i> CITIES</li> </Link>
                             </ul>
                         </div>

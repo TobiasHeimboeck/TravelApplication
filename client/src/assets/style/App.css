@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+
 .App {
   text-align: center;
 }
@@ -101,10 +103,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  color: darkorange;
-}
-
 .carousel {
   height: 200px;
   margin-bottom: 20px;
@@ -119,14 +117,55 @@ a:hover {
   color: white;
   font-weight: bold;
   text-align: center;
-  height: 60px;
+  height: 100px;
+  margin-top: -10px;
+  font-family: 'Alfa Slab One';
+}
+
+hr {
+  background-color: lightgray;
+  height: 0.5px;
 }
 
 .w3-sidebar {
-  background-color: rgba(206, 206, 211, 0.801);
+  height: 100%;
+  position: absolute;
+  background-color: white;
   z-index: 99;
-  max-width: 130px;
+  max-width: 500px;
+  width: 300px;
   right: 0;
+  color: #282c34;
+}
+
+.sidebarText {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.sidebarFooter {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  margin-left: 5px;
+}
+
+.sidebarFooter h1 {
+  font-size: 15px;
+}
+
+.sidebarFooter li {
+  list-style-type: none;
+}
+
+.copyright {
+  padding-top: 10px;
+  position: absolute;
+  color: #282c34;
+  font-weight: bold;
+  bottom: 0;
+  left: 27%;
 }
 
 #myPopup {
