@@ -1,14 +1,11 @@
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient
-var ObjectID = require('mongodb').ObjectID;
 const bodyParser = require('body-parser')
 const router = express.Router();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true', (error, db) => {
     var dbase = db.db("mytineryApp");
@@ -25,8 +22,9 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
 
     router.get('/all', function (request, response) {
         dbase.collection("cities").find().toArray((error, result) => {
-            if (!error)
+            if (!error) {
                 return response.send(result);
+            }
         })
     })
 
@@ -39,16 +37,21 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
     })
 
     router.get('/city/:name', function (request, response) {
-        dbase.collection("itineraries").find().toArray((error, result) => {
-            if (!error) {
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].name === request.params.name) {
-                        return response.send(result[i]);
-                    }
-                }
+        let { name } = request.params;
+
+        dbase.collection('itineraries').find({ reference: name }).toArray((error, result) => {
+            if (error) {
+                return response.send({success: false, message: 'Error: Server Error'});
             }
+
+            if (result.length === 0) {
+                return response.send({success: false, message: 'Error: No Itinerary Found'});
+            }
+
+            return response.send({success: true, message: result});
         })
     })
 
+    app.use("/itineraries", router);
     app.use("/cities", router);
 })

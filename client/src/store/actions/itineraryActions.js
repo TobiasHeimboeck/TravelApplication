@@ -1,20 +1,20 @@
 export const getCity = (city) => {
     return {
         type: 'GET_CITY',
-        city
+        city,
     }
 }
 
 export const cityIsLoading = (cityIsLoading) => {
     return {
         type: 'CITY_IS_LOADING',
-        cityIsLoading
+        cityIsLoading,
     }
 }
 
-export const fetchCitiesData = (name) => {
+export const fetchCityData = (name) => {
     return (dispatch) => {
-        fetch("/cities/city/" + name)
+        fetch("/" + name)
             .then(response => response.json())
             .then(result => {
                 dispatch(getCity(result));

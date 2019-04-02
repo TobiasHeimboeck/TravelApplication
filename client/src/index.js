@@ -10,14 +10,16 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import SecondLandingPage from './containers/SecondLandingPage.js';
 import CitiesPage from './containers/CitiesPage.js';
+import CityPage from './containers/CityPage.js';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer,  applyMiddleware(thunk));
 
 const routing = (
   <Router>
     <div>
       <Route exact path="/" component={SecondLandingPage} />
       <Route path="/cities" component={CitiesPage} />
+      <Route path="/itineraries/city/:name" component={CityPage} />
     </div>
   </Router>
 );

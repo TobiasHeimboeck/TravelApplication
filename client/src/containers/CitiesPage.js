@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar.js';
 import PreNavbar from '../components/PreNavbar.js';
 import City from '../components/City.js';
 import { connect } from "react-redux";
-import * as actionCreator from '../store/actions/actions.js';
+import * as actionCreator from '../store/actions/cityActions.js';
 
 class CitiesPage extends React.Component {
 
