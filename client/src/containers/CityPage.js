@@ -27,7 +27,7 @@ class CityPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {city: state.message, cityIsLoading: state.success};
+    return {city: state, cityIsLoading: state.cityIsLoading};
 }
 
 const mapDispatchToProps = dispatch => {

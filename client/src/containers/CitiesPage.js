@@ -5,7 +5,6 @@ import * as actionCreator from '../store/actions/cityActions.js';
 import { Link } from 'react-router-dom';
 
 class CitiesPage extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -38,8 +37,8 @@ class CitiesPage extends React.Component {
                         <div className="searchbar">
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>                                                  
                             <ul className="selectors">
-                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME </li> </Link>
-                                <Link to="/cities"> <li style={{float: "right"}}> <i className="fas fa-city"></i> CITIES</li> </Link>
+                                <Link to="/"> <li> <i className="fa fa-home"></i> HOME </li> </Link>
+                                <Link to="/cities"> <li> <i className="fas fa-city toCity"></i> CITIES</li> </Link>
                             </ul>
                         </div>
                         {this.state.filteredCities.map((item, index) => (
@@ -53,8 +52,8 @@ class CitiesPage extends React.Component {
                         <div className="searchbar">
                             <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
                             <ul className="selectors">
-                                <Link to="/"> <li style={{float: "left"}}> <i className="fa fa-home"></i> HOME</li> </Link>
-                                <Link to="/cities"> <li style={{float: "right"}}> <i className="fas fa-city"></i> CITIES</li> </Link>
+                                <Link to="/"> <li> <i className="fa toHome fa-home"></i> HOME</li> </Link>
+                                <Link to="/cities"> <li> <i className="fa fa-city toCity"></i> CITIES</li> </Link>
                             </ul>
                         </div>
                         {this.props.cities.map((item, index) => (
