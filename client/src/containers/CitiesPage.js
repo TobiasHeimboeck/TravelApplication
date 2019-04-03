@@ -40,9 +40,7 @@ class CitiesPage extends React.Component {
                 return (
                     <div>
                         <Sidebar />
-
                         <div id="page">
-
                             <div className="searchbar">
                                 <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>                                                  
                                 <i onClick={this.open} className="fa fa-align-justify openSidebar"></i>
@@ -54,18 +52,14 @@ class CitiesPage extends React.Component {
                             {this.state.filteredCities.map((item, index) => (
                                 <City name={item.name} image={item.image} call={item.call} key={index} />
                             ))}
-
                         </div>
-
                     </div>
                 ); 
             } else {
                 return (
                     <div>
                         <Sidebar />
-
                         <div id="page">
-
                             <div className="searchbar">
                                 <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
                                 <i onClick={this.open} className="fa fa-align-justify openSidebar"></i>
@@ -77,9 +71,7 @@ class CitiesPage extends React.Component {
                             {this.props.cities.map((item, index) => (
                                 <City name={item.name} image={item.image} call={item.call} key={index} />
                             ))}
-                        
                         </div>
-
                     </div>
                 ); 
             }

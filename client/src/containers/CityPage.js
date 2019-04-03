@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
-import * as creator from '../store/actions/itineraryActions';
-import PreNavbar from '../components/PreNavbar';
-import Sidebar from '../components/Sidebar';
-import { Link } from 'react-router-dom';
+import * as creator from '../store/actions/itineraryActions.js';
+import PreNavbar from '../components/PreNavbar.js';
+import Sidebar from '../components/Sidebar.js';
 
 class CityPage extends React.Component {
 
     componentDidMount() {
         this.props.getCity(window.location.pathname.replace("/", ""));
+        console.log(this.props);
     }
 
     render() {
@@ -16,10 +16,29 @@ class CityPage extends React.Component {
             <div>
                 <Sidebar />
                 <PreNavbar />
-                <div className="toolbar">
-                    <Link to="/cities">
-                        <i className="fa fa-arrow-left"></i>
-                    </Link>
+                <div className="contentItinery">
+                    <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
+                    <h1>Moskau</h1>
+                    <div className="itineries">
+                        <div className="itinery">
+                            <div className="profile">
+                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                <p>Gaudi Lover</p>
+                            </div>
+                            <h1 className="itineryStatus">Gaudi In a day</h1>
+                            <i className="fa fa-expand-arrows-alt expand"></i>
+                            <ul>
+                                <li className="likes"> Likes: 34 </li>
+                                <li className="hours"> 12 Hours </li>
+                            </ul>
+                            <ul className="review">
+                                <li>#test</li>
+                                <li>#test1</li>
+                                <li>#test2</li>
+                                <li>#test3</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

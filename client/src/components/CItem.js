@@ -4,9 +4,9 @@ import { MDBCarouselCaption, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact'
 class CItem extends React.Component {
     constructor(props) {
         super(props);
-        this.itemId = {itemId: props.itemId}
-        this.title = {title: props.title}
-        this.image = {src: props.src}
+        this.itemId = {itemId: props.itemId};
+        this.title = {title: props.title};
+        this.image = {src: props.src};
     }
 
     render() {

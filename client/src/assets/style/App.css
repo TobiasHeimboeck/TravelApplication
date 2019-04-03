@@ -35,7 +35,7 @@
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(240, 233, 233);
 }
 
 .prenavbar {
@@ -98,8 +98,6 @@ body {
   font-size: 30px;
 }
 
-/* ================ Landing Page ================ */
-
 a {
   text-decoration: none;
   font-weight: bold;
@@ -113,8 +111,6 @@ a {
 .mt-5 {
   text-align: center;
 }
-
-/* ================ Sidebar ================ */
 
 .w3-close {
   background-color: rgba(37, 37, 228, 0.911);
@@ -172,8 +168,6 @@ hr {
   left: 27%;
 }
 
-/* ================ Popup ================ */
-
 #myPopup {
   max-height: 200px;
   max-width: 200px;
@@ -183,8 +177,6 @@ hr {
   margin-left: 10px;
   margin-top: 10px;
 }
-
-/* ================ Cities ================ */
 
 .cityTitle {
   text-align: center;
@@ -215,8 +207,6 @@ hr {
   height: 150px;
   width: 100%;
 }
-
-/* ================ Filter navbar ================ */
 
 @media (orientation: landscape) {
   .cityFilter {
@@ -273,4 +263,106 @@ hr {
 
 .toCity {
   margin-left: 135px;
+}
+
+.toCity2 {
+  margin-left: 43%;
+}
+
+.selectors2 li {
+  list-style-type: none; 
+  display: inline;
+}
+
+.selectors2 {
+  color: white;
+  padding-top: 20px;
+}
+
+.topbar {
+  background-color: rgba(49, 49, 228, 0.911);
+  height: 60px;
+  width: 100%;
+}
+
+.contentItinery h1 {
+  margin-top: -85px;
+  color: rgba(255, 255, 255, 0.733);
+  font-size: 30px;
+  font-family: 'Alfa Slab One', cursive;
+  text-align: center;
+}
+
+.cityImage {
+  height: 140px;
+  width: 100%;
+}
+
+.itineries {
+  margin-top: 60px;
+}
+
+.itinery {
+  margin-top: 10px;
+  margin-left: 7px;
+  width: 96%;
+  height: 85px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+
+.itinery p {
+  color: gray;
+  font-size: 13px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.itinery h1 {
+  margin-left: 80px;
+  font-family: sans-serif;
+  color: gray;
+  font-size: 17px;
+  width: 150px;
+  height: 20px;
+  margin-top: -20px;
+}
+
+.profile {
+  height: 30px;
+  width: 90px;
+}
+
+.profileImage {
+  height: 50px;
+  width: 50px;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+
+.itinery ul {
+  margin-left: 50px;
+  margin-top: -10px;
+  font-size: 11px;
+}
+
+.itinery li {
+  list-style-type: none;
+  display: inline;
+  margin-left: 10px;
+}
+
+.expand {
+  float: right;
+  margin-right: 10px;
+  margin-top: -32px;
+  color: rgb(100, 97, 97);
+}
+
+.review {
+  margin-top: 40px;
+  color: rgb(31, 84, 231);
+  text-decoration: underline;
+  font-style: italic;
 }

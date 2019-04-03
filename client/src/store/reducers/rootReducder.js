@@ -1,6 +1,7 @@
 const initState = {
     cities: [],
     citiesIsLoading: true,
+    username: "",
     call: "",
     title: "",
     profilePic: "",
@@ -33,6 +34,7 @@ export const rootReducer = (state = initState, action) => {
             ...state,
             title: action.title,
             profilePic: action.profilePic,
+            username: action.username,
             call: action.call,
             rating: action.rating,
             duration: action.duration,

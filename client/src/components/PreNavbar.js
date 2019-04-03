@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PreNavbar extends React.Component {
     open() {
@@ -11,9 +12,11 @@ class PreNavbar extends React.Component {
 
     render() {
         return (
-            <div className="prenavbar">
-                <i onClick={this.openPopup} className="user fa fa-user"></i>
-                <i onClick={this.open} className="more fa fa-align-justify"></i>
+            <div className="topbar">
+                <ul className="selectors2">
+                    <Link to="/"> <li> <i className="fa fa-home"></i> HOME </li> </Link>
+                    <Link to="/cities"> <li> <i className="fas fa-city toCity2"></i> CITIES</li> </Link>
+                </ul>
             </div>
         );
     }
