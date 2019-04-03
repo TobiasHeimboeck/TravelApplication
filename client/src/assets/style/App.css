@@ -218,8 +218,34 @@ hr {
 
 /* ================ Filter navbar ================ */
 
+@media (orientation: landscape) {
+  .cityFilter {
+    margin-left: 32px !important;
+  }
+
+  .toHome {
+    margin-left: 10px;
+  }
+
+  .toCity {
+    margin-left: 400px !important;
+  }
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+.openSidebar {
+  color: white;
+  margin-left: 85%;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
 .cityFilter {
-  width: 90%;
+  width: 75%;
   height: 40px;
   margin-left: 19px;
   color: darkgray;
@@ -242,7 +268,7 @@ hr {
 
 .selectors {
   color: white;
-  padding-top: 60px;
+  padding-top: 15px;
 }
 
 .toCity {

@@ -1,5 +1,6 @@
 import React from 'react';
 import City from '../components/City.js';
+import Sidebar from '../components/Sidebar.js';
 import { connect } from "react-redux";
 import * as actionCreator from '../store/actions/cityActions.js';
 import { Link } from 'react-router-dom';
@@ -27,6 +28,10 @@ class CitiesPage extends React.Component {
         this.setState({filteredCities});
     }
 
+    open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+
     render() {
         if (this.props.citiesIsLoading) {
             return <div>Loading...</div>;
@@ -34,31 +39,47 @@ class CitiesPage extends React.Component {
             if (this.state.filteredCities.length > 0) {
                 return (
                     <div>
-                        <div className="searchbar">
-                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>                                                  
-                            <ul className="selectors">
-                                <Link to="/"> <li> <i className="fa fa-home"></i> HOME </li> </Link>
-                                <Link to="/cities"> <li> <i className="fas fa-city toCity"></i> CITIES</li> </Link>
-                            </ul>
+                        <Sidebar />
+
+                        <div id="page">
+
+                            <div className="searchbar">
+                                <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>                                                  
+                                <i onClick={this.open} className="fa fa-align-justify openSidebar"></i>
+                                <ul className="selectors">
+                                    <Link to="/"> <li> <i className="fa fa-home"></i> HOME </li> </Link>
+                                    <Link to="/cities"> <li> <i className="fas fa-city toCity"></i> CITIES</li> </Link>
+                                </ul>
+                            </div>
+                            {this.state.filteredCities.map((item, index) => (
+                                <City name={item.name} image={item.image} call={item.call} key={index} />
+                            ))}
+
                         </div>
-                        {this.state.filteredCities.map((item, index) => (
-                            <City name={item.name} image={item.image} call={item.call} key={index} />
-                        ))}
+
                     </div>
                 ); 
             } else {
                 return (
                     <div>
-                        <div className="searchbar">
-                            <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
-                            <ul className="selectors">
-                                <Link to="/"> <li> <i className="fa toHome fa-home"></i> HOME</li> </Link>
-                                <Link to="/cities"> <li> <i className="fa fa-city toCity"></i> CITIES</li> </Link>
-                            </ul>
+                        <Sidebar />
+
+                        <div id="page">
+
+                            <div className="searchbar">
+                                <input value={this.state.cityFilter} onChange={this.handleFilterInput} className="cityFilter" type="text" placeholder="Search a city" name="Search city"></input>
+                                <i onClick={this.open} className="fa fa-align-justify openSidebar"></i>
+                                <ul className="selectors">
+                                    <Link to="/"> <li> <i className="fa toHome fa-home"></i> HOME</li> </Link>
+                                    <Link to="/cities"> <li> <i className="fa fa-city toCity"></i> CITIES</li> </Link>
+                                </ul>
+                            </div>
+                            {this.props.cities.map((item, index) => (
+                                <City name={item.name} image={item.image} call={item.call} key={index} />
+                            ))}
+                        
                         </div>
-                        {this.props.cities.map((item, index) => (
-                            <City name={item.name} image={item.image} call={item.call} key={index} />
-                        ))}
+
                     </div>
                 ); 
             }
