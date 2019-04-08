@@ -300,6 +300,8 @@ hr {
 
 .itineries {
   margin-top: 60px;
+  height: 67vh;
+  overflow: scroll;
 }
 
 .itinery {
@@ -365,4 +367,8 @@ hr {
   color: rgb(31, 84, 231);
   text-decoration: underline;
   font-style: italic;
+}
+
+.open {
+  height: 65vh;
 }

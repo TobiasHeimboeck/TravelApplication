@@ -12,7 +12,24 @@ class CityPage extends React.Component {
 
     expand(element) {
         var parent = element.target.parentNode;
-        parent.scrollIntoView(true);
+        if (!parent.hasAttribute("openend")) {
+            parent.setAttribute("openend", true);
+            for(var i = 0; i < document.getElementsByClassName("itinery").length; i++) {
+                if(!document.getElementsByClassName("itinery")[i].hasAttribute("openend")) {
+                    document.getElementsByClassName("itinery")[i].style.display = "none";
+                }
+            }
+            parent.scrollIntoView(true);
+            parent.classList.add("open");            
+        } else {
+            for(var c = 0; c < document.getElementsByClassName("itinery").length; c++) {
+                if(!document.getElementsByClassName("itinery")[c].hasAttribute("openend")) {
+                    document.getElementsByClassName("itinery")[c].style.display = "block";
+                }
+            }
+            parent.removeAttribute("openend");
+            parent.classList.remove("open");
+        }
     }
 
     render() {
@@ -24,6 +41,78 @@ class CityPage extends React.Component {
                     <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
                     <h1>Moskau</h1>
                     <div id="posts" className="itineries">
+                        <div className="itinery">
+                            <div className="profile">
+                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                <p>Gaudi Lover</p>
+                            </div>
+                            <h1 className="itineryStatus">Gaudi In a day</h1>
+                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                            <ul>
+                                <li className="likes"> Likes: 34 </li>
+                                <li className="hours"> 12 Hours </li>
+                            </ul>
+                            <ul className="review">
+                                <li>#test</li>
+                                <li>#test1</li>
+                                <li>#test2</li>
+                                <li>#test3</li>
+                            </ul>
+                        </div>
+                        <div className="itinery">
+                            <div className="profile">
+                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                <p>Gaudi Lover</p>
+                            </div>
+                            <h1 className="itineryStatus">Gaudi In a day</h1>
+                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                            <ul>
+                                <li className="likes"> Likes: 34 </li>
+                                <li className="hours"> 12 Hours </li>
+                            </ul>
+                            <ul className="review">
+                                <li>#test</li>
+                                <li>#test1</li>
+                                <li>#test2</li>
+                                <li>#test3</li>
+                            </ul>
+                        </div>
+                        <div className="itinery">
+                            <div className="profile">
+                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                <p>Gaudi Lover</p>
+                            </div>
+                            <h1 className="itineryStatus">Gaudi In a day</h1>
+                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                            <ul>
+                                <li className="likes"> Likes: 34 </li>
+                                <li className="hours"> 12 Hours </li>
+                            </ul>
+                            <ul className="review">
+                                <li>#test</li>
+                                <li>#test1</li>
+                                <li>#test2</li>
+                                <li>#test3</li>
+                            </ul>
+                        </div>
+                        <div className="itinery">
+                            <div className="profile">
+                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                <p>Gaudi Lover</p>
+                            </div>
+                            <h1 className="itineryStatus">Gaudi In a day</h1>
+                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                            <ul>
+                                <li className="likes"> Likes: 34 </li>
+                                <li className="hours"> 12 Hours </li>
+                            </ul>
+                            <ul className="review">
+                                <li>#test</li>
+                                <li>#test1</li>
+                                <li>#test2</li>
+                                <li>#test3</li>
+                            </ul>
+                        </div>
                         <div className="itinery">
                             <div className="profile">
                                 <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
