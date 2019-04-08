@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from "react-redux";
-import * as creator from '../store/actions/itineraryActions.js';
+import { connect } from 'react-redux';
 import PreNavbar from '../components/PreNavbar.js';
 import Sidebar from '../components/Sidebar.js';
+import * as itineryCreator from '../store/actions/itineraryActions.js';
+import * as activitiesCreator from '../store/actions/activitiesAction.js';
 
 class CityPage extends React.Component {
 
@@ -43,9 +44,9 @@ class CityPage extends React.Component {
                         <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
                         <h1>Moskau</h1>
 
+                        {console.log(this.props)}
                         <div id="posts" className="itineries">
                             {this.props.city.city.map((item, index) => (
-                        
                                 <div key={index} className="itinery">
                                     <div className="profile">
                                         <img className="profileImage" src={item.profilePic === "" ? "https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" : item.profilePic} alt="profile wallpaper"></img>
@@ -64,7 +65,6 @@ class CityPage extends React.Component {
                                     </ul>
                                 </div>
                             ))}
-                            
                         </div>
                     </div>
                 </div>
@@ -85,12 +85,13 @@ class CityPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {city: state, cityIsLoading: state.cityIsLoading};
+    return {city: state, cityIsLoading: state.cityIsLoading, activities: state.activities, activitiesIsLoading: state.activitiesIsLoading};
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCity: name => dispatch(creator.fetchCityData(name)),
+        getCity: name => dispatch(itineryCreator.fetchCityData(name)),
+        getActivities: () => dispatch(activitiesCreator.fetchActivitiesData()),
     }
 }
 

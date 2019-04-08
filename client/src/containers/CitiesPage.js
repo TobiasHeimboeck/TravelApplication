@@ -15,7 +15,6 @@ class CitiesPage extends React.Component {
 
     componentDidMount() {
         this.props.getCities();
-        this.info = this.props.cities;   
     }
 
     handleFilterInput = (cityFilter) => {

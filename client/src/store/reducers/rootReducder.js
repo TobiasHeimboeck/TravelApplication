@@ -1,9 +1,24 @@
 const initState = {
     cities: [],
     city: [],
+    activities: []
 }
 
 export const rootReducer = (state = initState, action) => {
+
+    if (action.type === "GET_ACTIVITIES") {
+        state = {
+            ...state,
+            activities: action.activities
+        }
+    }
+
+    if (action.type === "ACTIVITIES_IS_LOADING") {
+        state = {
+            ...state,
+            activitiesIsLoading: action.activitiesIsLoading
+        }
+    }
 
     if (action.type === "GET_CITIES") {
         state = {
