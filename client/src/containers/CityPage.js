@@ -48,7 +48,7 @@ class CityPage extends React.Component {
                         
                                 <div key={index} className="itinery">
                                     <div className="profile">
-                                        <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                        <img className="profileImage" src={item.profilePic === "" ? "https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" : item.profilePic} alt="profile wallpaper"></img>
                                         <p>{item.username}</p>
                                     </div>
                                     <h1 className="itineryStatus">{item.title}</h1>
