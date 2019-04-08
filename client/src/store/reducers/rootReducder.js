@@ -1,16 +1,6 @@
 const initState = {
     cities: [],
-    citiesIsLoading: true,
-    username: "",
-    call: "",
-    title: "",
-    profilePic: "",
-    rating: 0,
-    duration: 0,
-    price: 0,
-    hashtag: [],
-    reference: [],
-    cityIsLoading: true,
+    city: [],
 }
 
 export const rootReducer = (state = initState, action) => {
@@ -32,15 +22,7 @@ export const rootReducer = (state = initState, action) => {
     if (action.type === "GET_CITY") {
         state = {
             ...state,
-            title: action.title,
-            profilePic: action.profilePic,
-            username: action.username,
-            call: action.call,
-            rating: action.rating,
-            duration: action.duration,
-            price: action.price,
-            hashtag: action.hashtag,
-            reference: action.reference,
+            city: action.city.message
         }
     }
     

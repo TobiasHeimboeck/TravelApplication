@@ -313,12 +313,12 @@ hr {
   border-radius: 2px;
 }
 
-
 .itinery p {
   color: gray;
   font-size: 13px;
   margin-left: 5px;
   margin-top: 5px;
+  width: 200px;
 }
 
 .itinery h1 {
@@ -371,4 +371,18 @@ hr {
 
 .open {
   height: 65vh;
+}
+
+.no {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.noIcon {
+  margin-top: 200px;
+  color: white;
+  font-size: 70px;
+  margin-left: 39%;
 }

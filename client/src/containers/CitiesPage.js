@@ -15,6 +15,7 @@ class CitiesPage extends React.Component {
 
     componentDidMount() {
         this.props.getCities();
+        this.info = this.props.cities;   
     }
 
     handleFilterInput = (cityFilter) => {
@@ -33,6 +34,7 @@ class CitiesPage extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         if (this.props.citiesIsLoading) {
             return <div>Loading...</div>;
         } else {

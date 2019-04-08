@@ -33,145 +33,54 @@ class CityPage extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <Sidebar />
-                <PreNavbar />
-                <div className="contentItinery">
-                    <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
-                    <h1>Moskau</h1>
-                    <div id="posts" className="itineries">
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 34 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
-                        </div>
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 34 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
-                        </div>
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 34 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
-                        </div>
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 34 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
-                        </div>
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 34 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
-                        </div>
+        if (!this.props.cityIsLoading && this.props.city.city !== "Error: No Itinerary Found") {
+            return (
+                <div>
+                    <Sidebar />
+                    <PreNavbar />
 
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Test Person</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 101 </li>
-                                <li className="hours"> 13 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                            </ul>
-                        </div>
+                    <div className="contentItinery">
+                        <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
+                        <h1>Moskau</h1>
 
-                        <div className="itinery">
-                            <div className="profile">
-                                <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
-                                <p>Gaudi Lover</p>
-                            </div>
-                            <h1 className="itineryStatus">Gaudi In a day</h1>
-                            <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
-                            <ul>
-                                <li className="likes"> Likes: 35 </li>
-                                <li className="hours"> 12 Hours </li>
-                            </ul>
-                            <ul className="review">
-                                <li>#test</li>
-                                <li>#test1</li>
-                                <li>#test2</li>
-                                <li>#test3</li>
-                            </ul>
+                        <div id="posts" className="itineries">
+                            {this.props.city.city.map((item, index) => (
+                        
+                                <div key={index} className="itinery">
+                                    <div className="profile">
+                                        <img className="profileImage" src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" alt="profile wallpaper"></img>
+                                        <p>{item.username}</p>
+                                    </div>
+                                    <h1 className="itineryStatus">{item.title}</h1>
+                                    <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                                    <ul>
+                                        <li className="likes"> Likes: {item.rating} </li>
+                                        <li className="hours"> {item.duration} Hours </li>
+                                    </ul>
+                                    <ul className="review">
+                                        {item.hashtag.map((itemm, indexx) => (
+                                            <li key={indexx}>{itemm}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                            
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div>
+                    <Sidebar />
+                    <PreNavbar />
+                    <div className="no">
+                        <p>There are no itineries for this city</p>
+                    </div>
+                    <i className="fas fa-exclamation-triangle noIcon"></i>
+                </div>
+            );
+        }
     }
 }
 
