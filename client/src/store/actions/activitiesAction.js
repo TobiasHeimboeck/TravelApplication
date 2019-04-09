@@ -12,9 +12,9 @@ export const activitiesIsLoading = (activitiesIsLoading) => {
     }
 }
 
-export const fetchActivitiesData = () => {
+export const fetchActivities = () => {
     return (dispatch) => {
-        fetch("/cities/activities")
+        fetch("/cities/activities/all")
             .then(response => response.json())
             .then(result => {
                 dispatch(getActivities(result));

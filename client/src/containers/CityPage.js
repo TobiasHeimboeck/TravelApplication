@@ -6,29 +6,78 @@ import * as itineryCreator from '../store/actions/itineraryActions.js';
 import * as activitiesCreator from '../store/actions/activitiesAction.js';
 
 class CityPage extends React.Component {
+   
+    constructor(props) {
+        super(props);
+        this.activities = [];
+        this.activitiesForItinery = [];
+        this.bool = false;
+    }
 
     componentDidMount() {
         this.props.getCity(window.location.pathname.replace("/", ""));
+        this.props.getActivities();
+    }
+
+    getActivitiesForItinery(uuid) {
+        this.activities = this.props.activities;
+        var array = [];
+        for (var i = 0; i < this.activities.length; i++) {
+            if (this.activities[i].uuid === uuid) {
+                array.push(this.activities[i]);
+            }
+        }
+        this.activitiesForItinery = array;
+        this.bool = true;
     }
 
     expand(element) {
-        var parent = element.target.parentNode;
+        var parent = element.parentNode;
         if (!parent.hasAttribute("openend")) {
             parent.setAttribute("openend", true);
-            for(var i = 0; i < document.getElementsByClassName("itinery").length; i++) {
-                if(!document.getElementsByClassName("itinery")[i].hasAttribute("openend")) {
+            for (var i = 0; i < document.getElementsByClassName("itinery").length; i++) {
+                if (!document.getElementsByClassName("itinery")[i].hasAttribute("openend")) {
                     document.getElementsByClassName("itinery")[i].style.display = "none";
                 }
             }
+
             parent.scrollIntoView(true);
-            parent.classList.add("open");            
+            parent.classList.add("open");
+            
+            for (var e = 0; e < this.activitiesForItinery.length; e++) {
+                var activity = this.activitiesForItinery[e];
+                if (activity !== null) {
+                    var div = document.createElement("div");
+                    div.setAttribute("class", "activity");
+                    div.innerHTML = activity.text;
+                    div.style.backgroundImage = "url('" + activity.image + "')";
+                    parent.appendChild(div);
+                }
+            }
+
+            var input = document.createElement("input");
+            input.setAttribute("id", "inputActivity");
+            input.placeholder = "Your comment...";
+            parent.appendChild(input);
+
         } else {
-            for(var c = 0; c < document.getElementsByClassName("itinery").length; c++) {
-                if(!document.getElementsByClassName("itinery")[c].hasAttribute("openend")) {
+            var paras = document.getElementsByClassName('activity');
+            
+            parent.removeChild(document.getElementById("inputActivity"));
+
+            while(paras[0]) {
+                paras[0].parentNode.removeChild(paras[0]);
+            }
+
+
+            for (var c = 0; c < document.getElementsByClassName("itinery").length; c++) {
+                if (!document.getElementsByClassName("itinery")[c].hasAttribute("openend")) {
                     document.getElementsByClassName("itinery")[c].style.display = "block";
                 }
             }
             parent.removeAttribute("openend");
+        
+            
             parent.classList.remove("open");
         }
     }
@@ -39,21 +88,18 @@ class CityPage extends React.Component {
                 <div>
                     <Sidebar />
                     <PreNavbar />
-
                     <div className="contentItinery">
                         <img className="cityImage" src="https://wallpapercave.com/wp/wp1826140.jpg" alt="city wallpaper"></img>
                         <h1>Moskau</h1>
-
-                        {console.log(this.props)}
                         <div id="posts" className="itineries">
                             {this.props.city.city.map((item, index) => (
                                 <div key={index} className="itinery">
                                     <div className="profile">
-                                        <img className="profileImage" src={item.profilePic === "" ? "https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" : item.profilePic} alt="profile wallpaper"></img>
+                                    <img className="profileImage" src={item.profilePic === "" ? "https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg" : item.profilePic} alt="profile wallpaper"></img>
                                         <p>{item.username}</p>
                                     </div>
                                     <h1 className="itineryStatus">{item.title}</h1>
-                                    <i id="expander" onClick={this.expand} className="fa fa-expand-arrows-alt expand"></i>
+                                    <i id="expander" onClick={(event) => { this.expand(event.target); this.getActivitiesForItinery(item.uuid)}} className="fa fa-expand-arrows-alt expand"></i>
                                     <ul>
                                         <li className="likes"> Likes: {item.rating} </li>
                                         <li className="hours"> {item.duration} Hours </li>
@@ -91,7 +137,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getCity: name => dispatch(itineryCreator.fetchCityData(name)),
-        getActivities: () => dispatch(activitiesCreator.fetchActivitiesData()),
+        getActivities: () => dispatch(activitiesCreator.fetchActivities()),
     }
 }
 

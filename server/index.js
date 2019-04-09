@@ -28,14 +28,6 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
         })
     })
 
-    router.get('/activities', function (request, response) {
-        dbase.collection('activities').find().toArray((error, result) => {
-            if (!error) {
-                return response.send(result);
-            }
-        })
-    })
-
     router.get('/itineraries', function (request, response) {
         dbase.collection("itineraries").find().toArray((error, result) => {
             if (!error) {
@@ -43,7 +35,15 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
             }
         })
     })
-    
+
+    router.get('/activities/all', function (request, response) {
+        dbase.collection('activities').find().toArray((error, result) => {
+            if (!error) {
+                return response.send(result);
+            }
+        })
+    })
+
     router.get('/city/:name', function (request, response) {
         let { name } = request.params;
 
