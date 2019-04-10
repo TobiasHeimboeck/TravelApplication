@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
                 <hr></hr>
 
                 <Link to="#" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-sign-in-alt"></i> Login / Logout </Link>
-                <Link to="#" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-user"></i> Create Account </Link>
+                <Link to="/register" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-user"></i> Create Account </Link>
 
                 <div className="sidebarFooter">
                     <hr></hr>

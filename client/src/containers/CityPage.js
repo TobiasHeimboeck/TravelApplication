@@ -43,16 +43,20 @@ class CityPage extends React.Component {
 
             parent.scrollIntoView(true);
             parent.classList.add("open");
-            
-            for (var e = 0; e < this.activitiesForItinery.length; e++) {
-                var activity = this.activitiesForItinery[e];
-                if (activity !== null) {
-                    var div = document.createElement("div");
-                    div.setAttribute("class", "activity");
-                    div.innerHTML = activity.text;
-                    div.style.backgroundImage = "url('" + activity.image + "')";
-                    parent.appendChild(div);
+
+            if (this.activitiesForItinery.length > 0) {
+                for (var e = 0; e < this.activitiesForItinery.length; e++) {
+                    var activity = this.activitiesForItinery[e];
+                    if (activity !== null) {
+                        var div = document.createElement("div");
+                        div.setAttribute("class", "activity");
+                        div.innerHTML = activity.text;
+                        div.style.backgroundImage = "url('" + activity.image + "')";
+                        parent.appendChild(div);
+                    }
                 }
+            } else {
+                console.log("No activities avilable");
             }
 
             var input = document.createElement("input");
@@ -69,15 +73,13 @@ class CityPage extends React.Component {
                 paras[0].parentNode.removeChild(paras[0]);
             }
 
-
             for (var c = 0; c < document.getElementsByClassName("itinery").length; c++) {
                 if (!document.getElementsByClassName("itinery")[c].hasAttribute("openend")) {
                     document.getElementsByClassName("itinery")[c].style.display = "block";
                 }
             }
+
             parent.removeAttribute("openend");
-        
-            
             parent.classList.remove("open");
         }
     }
@@ -99,7 +101,7 @@ class CityPage extends React.Component {
                                         <p>{item.username}</p>
                                     </div>
                                     <h1 className="itineryStatus">{item.title}</h1>
-                                    <i id="expander" onClick={(event) => { this.expand(event.target); this.getActivitiesForItinery(item.uuid)}} className="fa fa-expand-arrows-alt expand"></i>
+                                    <i id="expander" onClick={(event) => {this.getActivitiesForItinery(item.uuid); this.expand(event.target);}} className="fa fa-expand-arrows-alt expand"></i>
                                     <ul>
                                         <li className="likes"> Likes: {item.rating} </li>
                                         <li className="hours"> {item.duration} Hours </li>

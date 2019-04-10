@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import SecondLandingPage from './containers/SecondLandingPage.js';
 import CitiesPage from './containers/CitiesPage.js';
 import CityPage from './containers/CityPage.js';
+import AccountPage from './containers/AccountPage.js';
 
 const store = createStore(rootReducer,  applyMiddleware(thunk));
 
@@ -19,6 +20,7 @@ const routing = (
     <div>
       <Route exact path="/" component={SecondLandingPage} />
       <Route path="/cities" component={CitiesPage} />
+      <Route path="/register" component={AccountPage} />
       <Route path="/itineraries/city/:name" component={CityPage} />
     </div>
   </Router>
