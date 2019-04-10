@@ -6,7 +6,6 @@ import * as itineryCreator from '../store/actions/itineraryActions.js';
 import * as activitiesCreator from '../store/actions/activitiesAction.js';
 
 class CityPage extends React.Component {
-   
     constructor(props) {
         super(props);
         this.activities = [];
@@ -63,7 +62,7 @@ class CityPage extends React.Component {
             input.setAttribute("id", "inputActivity");
             input.placeholder = "Your comment...";
             parent.appendChild(input);
-
+            
         } else {
             var paras = document.getElementsByClassName('activity');
             
