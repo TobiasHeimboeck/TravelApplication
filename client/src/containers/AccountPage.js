@@ -61,8 +61,17 @@ class AccountPage extends React.Component {
                 lastname.style.backgroundColor = "#C4C4C4";
             }, 1000);
         } else {
-            console.log(username.value, password.value, email.value, firstname.value, lastname.value);
-            console.log(this.state);
+            fetch("/cities/api/user/create", {
+                credentials: 'include',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                },
+                body: 'username=' + username.value + '&password=' + password.value + '&email=' + email.value + '&firstname=' + firstname.value + '&lastname=' + lastname.value
+            }).then(response => {
+                console.log('Request succeeded with JSON response', response);
+            })
+            .catch(e => console.log(e));
         }
     }
 
