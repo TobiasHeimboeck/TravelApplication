@@ -20,11 +20,11 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
     router.post('/api/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
 
-        if (!username) return res.send({success: false, message: "Error: Name is empty"});
-        if (!password) return res.send({success: false, message: "Error: Password is empty"});
-        if (!email) return res.send({success: false, message: "Error: Email is empty"});
-        if (!firstname) return res.send({success: false, message: "Error: Firstname is empty"});
-        if (!lastname) return res.send({success: false, message: "Error: Lastname is empty"});
+        if (!username) return res.send({success: false, message: "Name is empty"});
+        if (!password) return res.send({success: false, message: "Password is empty"});
+        if (!email) return res.send({success: false, message: "Email is empty"});
+        if (!firstname) return res.send({success: false, message: "Firstname is empty"});
+        if (!lastname) return res.send({success: false, message: "Lastname is empty"});
 
         dbase.collection('users').find().toArray((err, result) => {
             let emailAlreadyExist = result.filter(user => user.email === email);
@@ -39,12 +39,14 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
                     }
                 });
             }
+
             if (usernameAlreadyExist.length > 0) {
                 return res.send({
                     success: false,
                     message: {username: "Username is already in use"}
                 });
             }
+
             if (emailAlreadyExist.length > 0) {
                 return res.send({
                     success: false,

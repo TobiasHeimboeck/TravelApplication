@@ -3,18 +3,7 @@ import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
 
 class AccountPage extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            username:  '',
-            password:  '',
-            email:     '',
-            firstname: '',
-            lastname:  '',
-            agreed:    false,
-        }
-    }
-
+    
     create() {
         var username = document.getElementById("username");
         var password = document.getElementById("password");
@@ -72,7 +61,6 @@ class AccountPage extends React.Component {
                 return response.json();
             }).then(json => {
                 if (json.success) {
-                    console.log(json);
                     email.style.color = "#605757";
                 } else {
                     if (json.message.email !== undefined && json.message.username !== undefined) {

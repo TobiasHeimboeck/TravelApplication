@@ -12,19 +12,19 @@ import SecondLandingPage from './containers/SecondLandingPage.js';
 import CitiesPage from './containers/CitiesPage.js';
 import CityPage from './containers/CityPage.js';
 import AccountPage from './containers/AccountPage.js';
+import LoginPage from './containers/LoginPage.js';
 
-const store = createStore(rootReducer,  applyMiddleware(thunk));
-
+const store = createStore(rootReducer, applyMiddleware(thunk));
 const routing = (
   <Router>
     <div>
       <Route exact path="/" component={SecondLandingPage} />
       <Route path="/cities" component={CitiesPage} />
       <Route path="/register" component={AccountPage} />
+      <Route path="/login" component={LoginPage} />
       <Route path="/itineraries/city/:name" component={CityPage} />
     </div>
   </Router>
 );
-
 ReactDOM.render(<Provider store={store}>{routing}</Provider>, document.getElementById('root'));
 serviceWorker.unregister();

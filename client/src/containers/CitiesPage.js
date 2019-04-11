@@ -54,7 +54,7 @@ class CitiesPage extends React.Component {
                             ))}
                         </div>
                     </div>
-                ); 
+                );
             } else {
                 return (
                     <div>
