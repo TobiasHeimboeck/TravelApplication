@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
 
 class AccountPage extends React.Component {
-    
+
     create() {
         var username = document.getElementById("username");
         var password = document.getElementById("password");

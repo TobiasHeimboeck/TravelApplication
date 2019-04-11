@@ -2,7 +2,7 @@ const initState = {
     cities: [],
     city: [],
     activities: []
-}
+};
 
 export const rootReducer = (state = initState, action) => {
 
@@ -30,7 +30,7 @@ export const rootReducer = (state = initState, action) => {
     if (action.type === "CITIES_IS_LOADING") {
         state = {
             ...state,
-            citiesIsLoading: action.citiesIsLoading
+            citiesIsLoading: action.citiesIsLoading,
         }
     }
 

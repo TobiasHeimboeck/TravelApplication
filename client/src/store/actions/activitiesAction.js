@@ -17,7 +17,7 @@ export const fetchActivities = () => {
         fetch("/cities/activities/all")
             .then(response => response.json())
             .then(result => {
-                dispatch(getActivities(result));
+                dispatch(getActivities(result),);
                 dispatch(activitiesIsLoading(false));
             })
             .catch(e => console.log(e));

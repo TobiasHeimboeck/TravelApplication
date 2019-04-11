@@ -10,21 +10,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true', (error, db) => {
     var dbase = db.db("mytineryApp");
-    if (error)
+    var port = 8080;
+    if (error) 
         return console.log(error);
 
-    app.listen(8080, () => {
-        console.log('app working on 8080')
+    app.listen(port, () => {
+        console.log('app working on 8080');
     })
 
     router.post('/api/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
 
-        if (!username) return res.send({success: false, message: "Name is empty"});
-        if (!password) return res.send({success: false, message: "Password is empty"});
-        if (!email) return res.send({success: false, message: "Email is empty"});
-        if (!firstname) return res.send({success: false, message: "Firstname is empty"});
-        if (!lastname) return res.send({success: false, message: "Lastname is empty"});
+        if (!username || !password || !email || !firstname || !lastname)
+            return res.send({success: false, message: "Field is empty"});
 
         dbase.collection('users').find().toArray((err, result) => {
             let emailAlreadyExist = result.filter(user => user.email === email);

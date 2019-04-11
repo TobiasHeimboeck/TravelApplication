@@ -3,6 +3,27 @@ import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
 
 class LoginPage extends React.Component {
+
+    login() {
+        var username = document.getElementById("logname");
+        var password = document.getElementById("pword");
+
+        if (username.value === "") {
+            username.placeholder = "Username is required";
+            username.style.color = "red";
+        }
+
+        if (password.value === "") {
+            password.placeholder = "Password is required";
+            password.style.color = "red";
+        }
+
+        if (username.value !== "" && password.value !== "") {
+            console.log("Success!");
+            console.log("Username: " + username.value, "Password: " + password.value);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -19,9 +40,9 @@ class LoginPage extends React.Component {
                         <input id="logname" placeholder="Username"></input>
                     </div>
                     <div className="log">
-                        <input id="logname" placeholder="Password"></input>
+                        <input id="pword" type="password" placeholder="Password"></input>
                     </div>
-                    <div className="logSubmit">
+                    <div onClick={this.login} className="logSubmit">
                         <p>Login now</p>
                     </div>
                     <p className="text">

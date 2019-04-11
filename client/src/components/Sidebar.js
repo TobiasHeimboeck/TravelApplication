@@ -18,9 +18,9 @@ class Sidebar extends React.Component {
                 <Link to="/cities" className="sidebarText w3-bar-item w3-button"> <i className="fas fa-city"></i> Cities </Link>
                 <hr></hr>
 
-                <Link to="#" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-sign-in-alt"></i> Login / Logout </Link>
+                <Link to="/login" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-sign-in-alt"></i> Login / Logout </Link>
                 <Link to="/register" className="sidebarText w3-bar-item w3-button"> <i className="fa fa-user"></i> Create Account </Link>
-                
+
                 <div className="sidebarFooter">
                     <hr></hr>
                     <h1 className="copyright">&copy; Tobias Heimböck </h1>
