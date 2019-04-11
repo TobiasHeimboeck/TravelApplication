@@ -69,7 +69,29 @@ class AccountPage extends React.Component {
                 },
                 body: 'username=' + username.value + '&password=' + password.value + '&email=' + email.value + '&firstname=' + firstname.value + '&lastname=' + lastname.value
             }).then(response => {
-                console.log('Request succeeded with JSON response', response);
+                return response.json();
+            }).then(json => {
+                if (json.success) {
+                    console.log(json);
+                    email.style.color = "#605757";
+                } else {
+                    if (json.message.email !== undefined && json.message.username !== undefined) {
+                        email.value = "";
+                        email.style.color = "red";
+                        email.placeholder = json.message.email;
+                        username.value = "";
+                        username.style.color = "red";
+                        username.placeholder = json.message.username;
+                    } else if (json.message.email !== undefined) {
+                        email.value = "";
+                        email.style.color = "red";
+                        email.placeholder = json.message.email;
+                    } else if (json.message.username !== undefined) {
+                        username.value = "";
+                        username.style.color = "red";
+                        username.placeholder = json.message.username;
+                    }
+                }
             })
             .catch(e => console.log(e));
         }

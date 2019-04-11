@@ -27,11 +27,28 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
         if (!lastname) return res.send({success: false, message: "Error: Lastname is empty"});
 
         dbase.collection('users').find().toArray((err, result) => {
-            let previousUser = result.filter(user => user.email === email);
-            if (previousUser.length > 0) {
+            let emailAlreadyExist = result.filter(user => user.email === email);
+            let usernameAlreadyExist = result.filter(userr => userr.username === username);
+            
+            if (emailAlreadyExist.length > 0 && usernameAlreadyExist.length > 0) {
                 return res.send({
                     success: false,
-                    message: "Error: Email is already in use"
+                    message: {
+                        email: "Email is already in use", 
+                        username: "Username is already in use"
+                    }
+                });
+            }
+            if (usernameAlreadyExist.length > 0) {
+                return res.send({
+                    success: false,
+                    message: {username: "Username is already in use"}
+                });
+            }
+            if (emailAlreadyExist.length > 0) {
+                return res.send({
+                    success: false,
+                    message: {email: "Email is already in use"}
                 });
             }
 

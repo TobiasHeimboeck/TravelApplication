@@ -33,7 +33,6 @@ class CitiesPage extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         if (this.props.citiesIsLoading) {
             return <div>Loading...</div>;
         } else {
