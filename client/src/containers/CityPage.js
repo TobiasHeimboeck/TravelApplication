@@ -54,8 +54,6 @@ class CityPage extends React.Component {
                         parent.appendChild(div);
                     }
                 }
-            } else {
-                console.log("No activities avilable");
             }
 
             var input = document.createElement("input");

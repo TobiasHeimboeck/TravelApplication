@@ -10,12 +10,48 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true', (error, db) => {
     var dbase = db.db("mytineryApp");
-    var port = 8080;
     if (error) 
         return console.log(error);
 
-    app.listen(port, () => {
+    app.listen(8080, () => {
         console.log('app working on 8080');
+    })
+
+    router.post('/api/user/login', (req, res) => {
+        const {username, password} = req.body;
+
+        if (!username || !password)
+            return res.send({success: false, message: 'Field is empty'});
+
+        dbase.collection('users').find().toArray((err, result) => {
+            let rawUser = result.filter(user => user.username === username);
+                                                                                                                
+            if (rawUser.length <= 0)
+                return res.send({state: 'username', success: false, message: 'This user doesnt exist'});
+                
+            var user = rawUser[0];
+            
+            if (user.password !== password)
+                return res.send({state: 'password', success: false, message: "Your password is wrong"});
+
+            if (user.loggedIn) 
+                return res.send({state: 'alreadyLoggedIn', success: false, message: "You are already logged in"});
+                
+            user.loggedIn = true;
+            
+            dbase.collection('users').save(user, (error, result) => {
+                if (error) {
+                    return res.send({
+                        success: false,
+                        message: "Error: Server Error"
+                    })
+                }
+                res.send({
+                    success: true,
+                    message: "Logged in"
+                });
+            })
+        })
     })
 
     router.post('/api/user/create', (req, res) => {
@@ -58,6 +94,7 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
             user.email = email;
             user.firstname = firstname;
             user.lastname = lastname;
+            user.loggedIn = false;
 
             dbase.collection('users').save(user, (error, result) => {
                 if (error) {

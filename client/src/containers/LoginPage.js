@@ -19,8 +19,44 @@ class LoginPage extends React.Component {
         }
 
         if (username.value !== "" && password.value !== "") {
-            console.log("Success!");
-            console.log("Username: " + username.value, "Password: " + password.value);
+            fetch("/cities/api/user/login", {
+                credentials: 'include',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                },
+                body: 'username=' + username.value + '&password=' + password.value
+            }).then(response => {
+                return response.json();
+            }).then(json => {
+                if (json.success) {
+                    username.style.color = "#605757";
+                    password.style.color = "#605757";
+                } else {
+                    switch (json.state) {
+                        case 'username':
+                            username.value = "";
+                            username.placeholder = "This username doesn't exist";
+                            username.style.color = "red";
+                            break;
+                        case 'password':
+                            password.value = "";
+                            password.placeholder = "Password is wrong";
+                            password.style.color = "red";
+                            break;
+                        case 'alreadyLoggedIn':
+                            username.value = "";
+                            password.value = "";
+                            username.placeholder = "You already logged in";
+                            username.style.color = "red";
+                            password.placeholder = "You already logged in";
+                            password.style.color = "red";
+                            break;
+                    }
+                }
+            }).catch(e => {
+                console.log(e);
+            });
         }
     }
 

@@ -28,8 +28,7 @@
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
-  }
-  to {
+  } to {
     transform: rotate(360deg);
   }
 }
@@ -212,11 +211,9 @@ hr {
   .cityFilter {
     margin-left: 32px !important;
   }
-
   .toHome {
     margin-left: 10px;
   }
-
   .toCity {
     margin-left: 400px !important;
   }
@@ -574,7 +571,6 @@ input[type=checkbox], input[type=radio] {
   height: 60px;
   left: 20px;
   top: 470px;
-
   background: #3998CE;
   border-radius: 10px;
 }

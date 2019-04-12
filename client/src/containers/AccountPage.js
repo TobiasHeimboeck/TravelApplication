@@ -125,7 +125,7 @@ class AccountPage extends React.Component {
                     <input className="check" type="checkbox" /> I agree with Mytinerary’s
                     <a className="terms" href="...">Terms & Conditions</a>
                     <button onClick={this.create} className="submit">
-                        <p>Create</p>
+                        <p>create</p>
                     </button>
                 </div>
             </div>

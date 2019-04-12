@@ -20,6 +20,10 @@ let UserSchema = new mongoose.Schema({
     lastname: {
         type: String,
         default: ''
+    },
+    loggedIn: {
+        type: Boolean,
+        default: false,
     }
 });
 
