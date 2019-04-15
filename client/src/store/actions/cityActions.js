@@ -14,7 +14,7 @@ export const citiesIsLoading = (citiesIsLoading) => {
 
 export const fetchCitiesData = () => {
     return (dispatch) => {
-        fetch("/cities/all")
+        fetch("/api/all")
             .then(response => response.json())
             .then(result => {
                 dispatch(getCities(result));

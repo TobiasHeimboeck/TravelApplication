@@ -1,20 +1,59 @@
 const express = require('express');
 const app = express();
 const User = require("./models/User");
+const passport = require('passport');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
+const passportSetup = require('./config/passport-setup.js');
 const router = express.Router();
+
+const mongoURL = "mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true";
+const port = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true', (error, db) => {
+MongoClient.connect(mongoURL, (error, db) => {
     var dbase = db.db("mytineryApp");
     if (error) 
-        return console.log(error);
+        console.log(error);
 
-    app.listen(8080, () => {
-        console.log('app working on 8080');
+    app.listen(port, () => {
+        console.log("\n", `Application listening on port: ${port}`, "\n");
+    })
+
+    router.post('/api/user/logout', (req, res) => {
+        const {username} = req.body;
+
+        if (!username) {
+            return res.send({success: false, message: 'Field is empty'});
+        }
+
+        dbase.collection('users').find().toArray((err, result) => {
+            let rawUser = result.filter(user => user.username === username);
+            if (rawUser.length <= 0)
+                return res.send({state: 'username', success: false, message: 'This user doesnt exist'});
+
+            var user = rawUser[0];
+
+            if (!user.loggedIn)
+                return res.send({state: 'alreadyLoggedIn', success: false, message: 'You have to log in first'})
+        
+            user.loggedIn = false;
+
+            dbase.collection('users').save(user, (error, result) => {
+                if (error) {
+                    return res.send({
+                        success: false,
+                        message: "Error: Server Error"
+                    })
+                }
+                res.send({
+                    success: true,
+                    message: "Logged out"
+                });
+            })
+        })
     })
 
     router.post('/api/user/login', (req, res) => {
@@ -53,7 +92,7 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
             })
         })
     })
-
+    
     router.post('/api/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
 
@@ -155,6 +194,16 @@ MongoClient.connect('mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.
         })
     })
 
-    app.use("/itineraries", router);
-    app.use("/cities", router);
+    router.get('/google', passport.authenticate('google', {
+        scope: ['profile']
+    }))
+
+    router.get('/google/redirect', passport.authenticate('google', (req, res) => {
+        res.send("You reached the callback URL");
+    }))
+
+    app.use("/api", router);
 })
+
+
+// 3119 71821514265217 1115131320 91313518 14935!

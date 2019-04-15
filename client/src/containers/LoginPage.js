@@ -1,10 +1,12 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends React.Component {
 
     login() {
+        
         var username = document.getElementById("logname");
         var password = document.getElementById("pword");
 
@@ -25,7 +27,7 @@ class LoginPage extends React.Component {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 },
-                body: 'username=' + username.value + '&password=' + password.value
+                body: `username=${username.value}&password=${password.value}`
             }).then(response => {
                 return response.json();
             }).then(json => {
@@ -46,11 +48,13 @@ class LoginPage extends React.Component {
                             break;
                         case 'alreadyLoggedIn':
                             username.value = "";
-                            password.value = "";
-                            username.placeholder = "You already logged in";
+                            username.placeholder = "You are already logged in";
                             username.style.color = "red";
-                            password.placeholder = "You already logged in";
+                            password.value = "";
+                            password.placeholder = "You are already logged in";
                             password.style.color = "red";
+                            break;
+                        default:
                             break;
                     }
                 }
@@ -67,10 +71,9 @@ class LoginPage extends React.Component {
                 <PreNavbar />
                 <i className="fas fa-rocket"></i>
                 <h1 className="myHeadline">My Itinerary</h1>
-                <div className="google">
-                    <i className="fab fa-google"></i>
-                    <p>Sign in</p>
-                </div>
+                
+                <Link to="/api/google">Google</Link>
+                
                 <div className="cont">
                     <div className="log">
                         <input id="logname" placeholder="Username"></input>
