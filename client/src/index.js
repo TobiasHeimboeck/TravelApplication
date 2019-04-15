@@ -22,7 +22,7 @@ const routing = (
       <Route path="/cities" component={CitiesPage} />
       <Route path="/register" component={AccountPage} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/itineraries/city/:name" component={CityPage} />
+      <Route path="/api/city/:name" component={CityPage} />
     </div>
   </Router>
 );

@@ -14,7 +14,7 @@ class City extends React.Component {
     render() {
         return (
             <div className="city">
-                <Link to={"/itineraries/city/" + this.props.call}>
+                <Link to={"/api/city/" + this.props.call}>
                     <div className="cityImageHeader"> <p> {this.props.name} </p> </div>
                     <img src={this.props.image} alt={"City"}></img>
                 </Link>

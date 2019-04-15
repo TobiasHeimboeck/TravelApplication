@@ -3,7 +3,6 @@ import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
 
 class AccountPage extends React.Component {
-
     create() {
         var username = document.getElementById("username");
         var password = document.getElementById("password");
@@ -17,6 +16,7 @@ class AccountPage extends React.Component {
             email.style.backgroundColor = "red";
             firstname.style.backgroundColor = "red";
             lastname.style.backgroundColor = "red";
+
             setTimeout(function() {
                 username.style.backgroundColor = "#C4C4C4";
                 password.style.backgroundColor = "#C4C4C4";
@@ -56,7 +56,7 @@ class AccountPage extends React.Component {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 },
-                body: 'username=' + username.value + '&password=' + password.value + '&email=' + email.value + '&firstname=' + firstname.value + '&lastname=' + lastname.value
+                body: `username=${username.value}&password=${password.value}&email=${email.value}&firstname=${firstname}&lastname=${lastname}`
             }).then(response => {
                 return response.json();
             }).then(json => {

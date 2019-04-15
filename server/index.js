@@ -92,6 +92,35 @@ MongoClient.connect(mongoURL, (error, db) => {
             })
         })
     })
+
+    router.get('/user/:email', (req, res) => {
+        let { email } = req.params;
+        dbase.collection('users').find({ email: email }).toArray((error, result) => {
+            if (error)
+                return res.send({success: false, message: 'Error: Server Error'});
+
+            if (result.length === 0)
+                return res.send({success: false, message: 'Error: No User Found'});
+
+            return res.send({success: true, message: result});
+        })
+    })
+
+    router.get('/city/:name', function (request, response) {
+        let { name } = request.params;
+
+        dbase.collection('itineraries').find({ reference: name }).toArray((error, result) => {
+            if (error) {
+                return response.send({success: false, message: 'Error: Server Error'});
+            }
+
+            if (result.length === 0) {
+                return response.send({success: false, message: 'Error: No Itinerary Found'});
+            }
+
+            return response.send({success: true, message: result});
+        })
+    })
     
     router.post('/api/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
@@ -175,22 +204,6 @@ MongoClient.connect(mongoURL, (error, db) => {
             if (!error) {
                 return response.send(result);
             }
-        })
-    })
-
-    router.get('/city/:name', function (request, response) {
-        let { name } = request.params;
-
-        dbase.collection('itineraries').find({ reference: name }).toArray((error, result) => {
-            if (error) {
-                return response.send({success: false, message: 'Error: Server Error'});
-            }
-
-            if (result.length === 0) {
-                return response.send({success: false, message: 'Error: No Itinerary Found'});
-            }
-
-            return response.send({success: true, message: result});
         })
     })
 
