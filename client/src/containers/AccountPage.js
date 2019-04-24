@@ -50,18 +50,21 @@ class AccountPage extends React.Component {
                 lastname.style.backgroundColor = "#C4C4C4";
             }, 1000);
         } else {
-            fetch("/cities/api/user/create", {
+            fetch("/api/user/create", {
                 credentials: 'include',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 },
-                body: `username=${username.value}&password=${password.value}&email=${email.value}&firstname=${firstname}&lastname=${lastname}`
+                body: `username=${username.value}&password=${password.value}&email=${email.value}&firstname=${firstname.value}&lastname=${lastname.value}`
             }).then(response => {
                 return response.json();
             }).then(json => {
                 if (json.success) {
                     email.style.color = "#605757";
+                    if (localStorage.getItem("userId") === null) {
+                        localStorage.setItem("userId", json.message.userId);
+                    }
                 } else {
                     if (json.message.email !== undefined && json.message.username !== undefined) {
                         email.value = "";

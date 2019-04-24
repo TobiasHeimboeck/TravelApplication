@@ -24,6 +24,10 @@ let UserSchema = new mongoose.Schema({
     loggedIn: {
         type: Boolean,
         default: false,
+    },
+    uuid: {
+        type: String,
+        default: ''
     }
 });
 

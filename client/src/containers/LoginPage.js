@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
         }
 
         if (username.value !== "" && password.value !== "") {
-            fetch("/cities/api/user/login", {
+            fetch("/api/user/login", {
                 credentials: 'include',
                 method: 'POST',
                 headers: {
@@ -34,6 +34,10 @@ class LoginPage extends React.Component {
                 if (json.success) {
                     username.style.color = "#605757";
                     password.style.color = "#605757";
+                    console.log(json);
+                    if (localStorage.getItem("userId") === null) {
+                        localStorage.setItem("userId", json.message.userId);
+                    }
                 } else {
                     switch (json.state) {
                         case 'username':

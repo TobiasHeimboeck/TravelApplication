@@ -56,7 +56,7 @@ MongoClient.connect(mongoURL, (error, db) => {
         })
     })
 
-    router.post('/api/user/login', (req, res) => {
+    router.post('/user/login', (req, res) => {
         const {username, password} = req.body;
 
         if (!username || !password)
@@ -87,9 +87,25 @@ MongoClient.connect(mongoURL, (error, db) => {
                 }
                 res.send({
                     success: true,
-                    message: "Logged in"
+                    message: {
+                        msg: 'Logged in',
+                        userId: user.uuid,
+                    }
                 });
             })
+        })
+    })
+
+    router.get('/user/:uuid', (req, res) => {
+        let { uuid } = req.params;
+        dbase.collection('users').find({ uuid: uuid }).toArray((error, result) => {
+            if (error)
+                return res.send({success: false, message: 'Error: Server Error'});
+                
+            if (result.length === 0)
+                return res.send({success: false, message: 'Error: No User Found (uuid: ' + uuid + ')'});
+
+            return res.send({success: true, message: result});
         })
     })
 
@@ -121,8 +137,15 @@ MongoClient.connect(mongoURL, (error, db) => {
             return response.send({success: true, message: result});
         })
     })
+
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+    }
     
-    router.post('/api/user/create', (req, res) => {
+    router.post('/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
 
         if (!username || !password || !email || !firstname || !lastname)
@@ -163,6 +186,7 @@ MongoClient.connect(mongoURL, (error, db) => {
             user.firstname = firstname;
             user.lastname = lastname;
             user.loggedIn = false;
+            user.uuid = uuidv4();
 
             dbase.collection('users').save(user, (error, result) => {
                 if (error) {
@@ -173,7 +197,10 @@ MongoClient.connect(mongoURL, (error, db) => {
                 }
                 res.send({
                     success: true,
-                    message: "New User created"
+                    message: {
+                        msg: "New User created",
+                        userId: user.uuid
+                    }
                 });
             })
         })

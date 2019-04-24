@@ -2,7 +2,9 @@ import React from 'react';
 import City from '../components/City.js';
 import Sidebar from '../components/Sidebar.js';
 import { connect } from "react-redux";
-import * as actionCreator from '../store/actions/cityActions.js';
+import * as cityActionCreator from '../store/actions/cityActions.js';
+import * as userActionCreator from '../store/actions/userActions.js';
+
 import { Link } from 'react-router-dom';
 
 class CitiesPage extends React.Component {
@@ -15,6 +17,7 @@ class CitiesPage extends React.Component {
 
     componentDidMount() {
         this.props.getCities();
+        this.props.getCurrentUser(localStorage.getItem("userId"));
     }
 
     handleFilterInput = (cityFilter) => {
@@ -80,12 +83,21 @@ class CitiesPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {cities: state.cities, city: state.city, citiesIsLoading: state.citiesIsLoading};
+    return {
+        cities: state.cities, 
+        citiesIsLoading: state.citiesIsLoading,
+
+        city: state.city, 
+
+        user: state.user,
+        userIsLoading: state.userIsLoading
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getCities: () => dispatch(actionCreator.fetchCitiesData()),
+        getCities: () => dispatch(cityActionCreator.fetchCitiesData()),
+        getCurrentUser: uuid => dispatch(userActionCreator.fetchUserData(uuid)),
     }
 }
 
