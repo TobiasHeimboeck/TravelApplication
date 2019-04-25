@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-const User = require("./models/User");
+const User = require("./models/User").default;
 const passport = require('passport');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
-const passportSetup = require('./config/passport-setup.js');
 const router = express.Router();
 
 const mongoURL = "mongodb+srv://tobias:Wartberg11_@mytineryapp-kriyb.mongodb.net/mytineryApp?retryWrites=true";
@@ -15,11 +14,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect(mongoURL, (error, db) => {
     var dbase = db.db("mytineryApp");
-    if (error) 
+    if (error)
         console.log(error);
 
     app.listen(port, () => {
-        console.log("\n", `Application listening on port: ${port}`, "\n");
+        console.log(
+            "\n", 
+            `Application listening on port: ${port}`, 
+            "\n"
+        );
     })
 
     router.post('/api/user/logout', (req, res) => {
@@ -138,23 +141,24 @@ MongoClient.connect(mongoURL, (error, db) => {
         })
     })
 
-    function uuidv4() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-          return v.toString(16);
-        });
+    function generateUUID() {
+        var regex = ['xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx', /[xy]/g];
+        return regex[0].replace(regex[1], function (c) {
+            var random = Math.random() * 16 | 0, v = c === 'x' ? random : (random & 0x3 | 0x8);
+            return v.toString(16);
+        })
     }
     
     router.post('/user/create', (req, res) => {
         const {username, password, email, firstname, lastname} = req.body;
-
+        
         if (!username || !password || !email || !firstname || !lastname)
-            return res.send({success: false, message: "Field is empty"});
+            return res.send({success: false, message: 'Field is empty'});
 
         dbase.collection('users').find().toArray((err, result) => {
             let emailAlreadyExist = result.filter(user => user.email === email);
             let usernameAlreadyExist = result.filter(userr => userr.username === username);
-            
+
             if (emailAlreadyExist.length > 0 && usernameAlreadyExist.length > 0) {
                 return res.send({
                     success: false,
@@ -186,7 +190,7 @@ MongoClient.connect(mongoURL, (error, db) => {
             user.firstname = firstname;
             user.lastname = lastname;
             user.loggedIn = false;
-            user.uuid = uuidv4();
+            user.uuid = generateUUID();
 
             dbase.collection('users').save(user, (error, result) => {
                 if (error) {
@@ -245,5 +249,4 @@ MongoClient.connect(mongoURL, (error, db) => {
     app.use("/api", router);
 })
 
-
-// 3119 71821514265217 1115131320 91313518 14935!
+/* 3119 71821514265217 1115131320 91313518 14935! */

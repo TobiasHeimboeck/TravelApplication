@@ -1,12 +1,9 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import PreNavbar from '../components/PreNavbar';
-import { Link } from 'react-router-dom';
 
 class LoginPage extends React.Component {
-
     login() {
-        
         var username = document.getElementById("logname");
         var password = document.getElementById("pword");
 
@@ -24,9 +21,7 @@ class LoginPage extends React.Component {
             fetch("/api/user/login", {
                 credentials: 'include',
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
                 body: `username=${username.value}&password=${password.value}`
             }).then(response => {
                 return response.json();
@@ -34,7 +29,6 @@ class LoginPage extends React.Component {
                 if (json.success) {
                     username.style.color = "#605757";
                     password.style.color = "#605757";
-                    console.log(json);
                     if (localStorage.getItem("userId") === null) {
                         localStorage.setItem("userId", json.message.userId);
                     }
@@ -76,8 +70,6 @@ class LoginPage extends React.Component {
                 <i className="fas fa-rocket"></i>
                 <h1 className="myHeadline">My Itinerary</h1>
                 
-                <Link to="/api/google">Google</Link>
-                
                 <div className="cont">
                     <div className="log">
                         <input id="logname" placeholder="Username"></input>
@@ -89,8 +81,8 @@ class LoginPage extends React.Component {
                         <p>Login now</p>
                     </div>
                     <p className="text">
-                        Don’t have a MyItinerary account yet? <br></br>
-                        You should create one! It’s totally free and <br></br>
+                        Don’t have a MyItinerary account yet? <br />
+                        You should create one! It’s totally free and <br />
                         only takes a minute.
                     </p>
                     <a className="create" href="...">Create Account</a>

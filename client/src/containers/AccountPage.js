@@ -16,7 +16,6 @@ class AccountPage extends React.Component {
             email.style.backgroundColor = "red";
             firstname.style.backgroundColor = "red";
             lastname.style.backgroundColor = "red";
-
             setTimeout(function() {
                 username.style.backgroundColor = "#C4C4C4";
                 password.style.backgroundColor = "#C4C4C4";
@@ -53,15 +52,16 @@ class AccountPage extends React.Component {
             fetch("/api/user/create", {
                 credentials: 'include',
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
                 body: `username=${username.value}&password=${password.value}&email=${email.value}&firstname=${firstname.value}&lastname=${lastname.value}`
             }).then(response => {
                 return response.json();
             }).then(json => {
                 if (json.success) {
                     email.style.color = "#605757";
+                    if (localStorage.getItem("userId") === null) {
+                        localStorage.setItem("userId", json.message.userId);
+                    }
                     if (localStorage.getItem("userId") === null) {
                         localStorage.setItem("userId", json.message.userId);
                     }

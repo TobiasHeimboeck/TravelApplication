@@ -1,6 +1,6 @@
-export const getCurrentUser = (user) => {
+export const getUser = (user) => {
     return {
-        type: 'GET_CURRENT_USER',
+        type: 'GET_USER',
         user,
     }
 }
@@ -17,7 +17,7 @@ export const fetchUserData = (uuid) => {
         fetch("/api/user/" + uuid)
             .then(response => response.json())
             .then(result => {
-                dispatch(getCurrentUser(result));
+                dispatch(getUser(result));
                 dispatch(userIsLoading(false));
             })
             .catch(e => console.log(e));

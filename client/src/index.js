@@ -18,11 +18,11 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 const routing = (
   <Router>
     <div>
-      <Route exact path="/" component={SecondLandingPage} />
-      <Route path="/cities" component={CitiesPage} />
-      <Route path="/register" component={AccountPage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/api/city/:name" component={CityPage} />
+      <Route exact path="/"         component={SecondLandingPage} />
+      <Route path="/cities"         component={CitiesPage}        />
+      <Route path="/register"       component={AccountPage}       />
+      <Route path="/login"          component={LoginPage}         />
+      <Route path="/api/city/:name" component={CityPage}          />
     </div>
   </Router>
 );

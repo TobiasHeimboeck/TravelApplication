@@ -2,7 +2,7 @@ const initState = {
     cities: [],
     city: [],
     activities: [],
-    user: {}
+    user: [],
 };
 
 export const rootReducer = (state = initState, action) => {
@@ -13,7 +13,7 @@ export const rootReducer = (state = initState, action) => {
             activities: action.activities
         }
     }
-
+    
     if (action.type === "ACTIVITIES_IS_LOADING") {
         state = {
             ...state,
@@ -49,10 +49,10 @@ export const rootReducer = (state = initState, action) => {
         }
     }
 
-    if (action.type === "GET_CURRENT_USER") {
+    if (action.type === "GET_USER") {
         state = {
             ...state,
-            user: action.uuid
+            user: action.user
         }
     }
 

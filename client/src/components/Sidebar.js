@@ -23,7 +23,7 @@ class Sidebar extends React.Component {
 
                 <div className="sidebarFooter">
                     <hr></hr>
-                    <h1 className="copyright">&copy; Tobias Heimböck </h1>
+                    <h1 className="copyright">&copy; Tobias Heimböck</h1>
                 </div>
             </div>
         );

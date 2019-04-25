@@ -10,10 +10,10 @@ class App extends React.Component {
     return (
       <div className="app">
         <SecondLandingPage />
-        <CitiesPage        />
-        <CityPage          />
-        <AccountPage       />
-        <LoginPage         />
+        <CitiesPage />
+        <CityPage />
+        <AccountPage />
+        <LoginPage />
       </div>
     );
   }
