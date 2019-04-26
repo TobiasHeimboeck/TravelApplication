@@ -62,9 +62,6 @@ class AccountPage extends React.Component {
                     if (localStorage.getItem("userId") === null) {
                         localStorage.setItem("userId", json.message.userId);
                     }
-                    if (localStorage.getItem("userId") === null) {
-                        localStorage.setItem("userId", json.message.userId);
-                    }
                 } else {
                     if (json.message.email !== undefined && json.message.username !== undefined) {
                         email.value = "";
@@ -124,6 +121,12 @@ class AccountPage extends React.Component {
                         <span>Last Name</span>
                         <input id="lastname" placeholder="Your lastname"></input>
                     </div>
+
+                    <input className="check" type="checkbox" /> I agree with Mytinerary’s
+                    <a className="terms" href="...">Terms & Conditions</a>
+                    <button onClick={this.create} className="submit">
+                        <p>create</p>
+                    </button> 
 
                     <input className="check" type="checkbox" /> I agree with Mytinerary’s
                     <a className="terms" href="...">Terms & Conditions</a>

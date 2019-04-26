@@ -102,11 +102,6 @@ a {
   font-weight: bold;
 }
 
-.carousel {
-  height: 200px;
-  margin-bottom: 20px;
-}
-
 .mt-5 {
   text-align: center;
 }
@@ -590,4 +585,19 @@ input[type=checkbox], input[type=radio] {
   text-align: center;
   left: 20px;
   margin-top: 80px;
+}
+
+.carousel {
+  height: 100%;
+  padding: 0;
+}
+
+.carousel img {
+  height: 580px;
+}
+
+.carouselText {
+  margin-bottom: 300px;
+  font-size: 20px;
+  font-weight: bold;
 }

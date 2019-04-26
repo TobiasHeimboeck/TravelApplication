@@ -4,36 +4,19 @@ import data from '../assets/json/data.js';
 import CItem from './CItem.js';
 
 class Carousel extends React.Component {
-    
-    constructor() {
-        super();
-        this.content = this.createTable();
-    }
-
-    createTable() {
-        var list = [];
-
-        for (var i = 0; i < data.length; i++) {
-            list.push(
-                <CItem key={i} itemId={i} title={data[i].name} image={data[i].image} />
-            );
-        }
-
-        return list;
-    }
-
     render() {
         return (
             <MDBContainer className="carousel">
-              <h4 className="mt-5 mb-2">Popular MYtineraries</h4>
-              <MDBCarousel activeItem={1} length={12} showControls={true} showIndicators={true} className="z-depth-1">
+              <MDBCarousel activeItem={1} length={11} showControls={true} showIndicators={true} className="z-depth-1">
                 <MDBCarouselInner>
-                    {this.content}
+                    {data.map((item, index) => (
+                        <CItem key={index} itemId={index} title={item.name} image={item.image} />
+                    ))}
                 </MDBCarouselInner>
               </MDBCarousel>
             </MDBContainer>
         );
-    }   
+    }
 }
 
 export default Carousel;
